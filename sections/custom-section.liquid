@@ -1,0 +1,57 @@
+<h1>Hello World - {{ section.settings.text }}</h1>
+{% for block in section.blocks %}
+    {% if block.type == "social" %}
+        <a href="{{ block.settings.url }}">{{ block.settings.text }}</a>
+        {% elsif block.type == "paragraph" %}
+        <p>{{ block.settings.text }}</p>
+    {%  endif  %}
+{% endfor %}
+
+{% schema %}
+{
+    "name" : "tukebele",
+    "settings" : [
+        {
+            "type" : "text",
+            "id" : "text",
+            "label" : "Text"
+        }
+    ],
+    "tag" : "header",
+    "class" : "custom-kamb",
+    "presets" : [
+        {
+            "name" : "kamba"
+        }
+    ], 
+    "blocks" : [
+        {
+            "name" : "Social Link",
+            "type" : "social",
+            "settings" : [
+                {
+                    "type" : "text",
+                    "id" : "text",
+                    "label" : "Text"
+                },
+                {
+                    "type" : "url",
+                    "id" : "url",
+                    "label" : "URL"
+                }
+            ]
+        },
+         {
+            "name" : "Paragraph",
+            "type" : "paragraph",
+            "settings" : [
+                {
+                    "type" : "textarea",
+                    "id" : "text",
+                    "label" : "Text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
